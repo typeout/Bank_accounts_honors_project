@@ -1,0 +1,2 @@
+Nov 10, 2018 10:34:23 AM: SV Account dsa 488289 opened.
+Nov 10, 2018 10:34:30 AM: Charge of $100.00 for smth posted.

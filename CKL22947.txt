@@ -1,0 +1,4 @@
+Nov 10, 2018 10:37:51 AM: SV Account Domo Savings 22947 opened.
+Nov 10, 2018 10:37:59 AM: Charge of $500.00 for Rent posted.
+Nov 10, 2018 10:38:04 AM: Deposit of $1,000.00 posted.
+Nov 10, 2018 10:38:08 AM: Interest earned = $15.00 for month at annual rate of: 12%
