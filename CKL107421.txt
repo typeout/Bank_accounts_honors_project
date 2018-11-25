@@ -1,5 +1,0 @@
-Nov 10, 2018 10:41:34 AM: CK Account dasdas 107421 opened.
-Nov 10, 2018 10:41:37 AM: Charge of $123.00 for qasd posted.
-Nov 10, 2018 10:41:40 AM: Deposit of $213.00 posted.
-Nov 10, 2018 10:41:44 AM: Interest request: No action - checking accounts do not earn interest
-Nov 10, 2018 10:41:54 AM: Charge of $123.00 for  posted.

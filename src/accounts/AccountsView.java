@@ -12,11 +12,14 @@ import org.jdesktop.application.TaskMonitor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import javax.swing.Timer;
 import javax.swing.Icon;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 
@@ -142,6 +145,7 @@ public class AccountsView extends FrameView {
         jmnuAsset = new javax.swing.JMenu();
         jmnuCK = new javax.swing.JMenuItem();
         jmnuSV = new javax.swing.JMenuItem();
+        jmnuOpen = new javax.swing.JMenuItem();
         javax.swing.JMenuItem exitMenuItem = new javax.swing.JMenuItem();
         javax.swing.JMenu helpMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem aboutMenuItem = new javax.swing.JMenuItem();
@@ -212,7 +216,7 @@ public class AccountsView extends FrameView {
                 .addComponent(jlblStartVal4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jtxtBalance, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -327,7 +331,13 @@ public class AccountsView extends FrameView {
         });
 
         jbtnLog.setText(resourceMap.getString("jbtnLog.text")); // NOI18N
+        jbtnLog.setEnabled(false);
         jbtnLog.setName("jbtnLog"); // NOI18N
+        jbtnLog.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnLogActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -361,7 +371,7 @@ public class AccountsView extends FrameView {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jbtnLog)
                             .addComponent(jbtnChg))))
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -408,15 +418,14 @@ public class AccountsView extends FrameView {
                         .addComponent(jtxtStartVal, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jbtnCreate)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                         .addComponent(jbtnCancel)
                         .addContainerGap(27, Short.MAX_VALUE))
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(54, Short.MAX_VALUE))
-                    .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())))
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -465,6 +474,15 @@ public class AccountsView extends FrameView {
         jmnuAsset.add(jmnuSV);
 
         fileMenu.add(jmnuAsset);
+
+        jmnuOpen.setText(resourceMap.getString("jmnuOpen.text")); // NOI18N
+        jmnuOpen.setName("jmnuOpen"); // NOI18N
+        jmnuOpen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmnuOpenActionPerformed(evt);
+            }
+        });
+        fileMenu.add(jmnuOpen);
 
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(accounts.AccountsApp.class).getContext().getActionMap(AccountsView.class, this);
         exitMenuItem.setAction(actionMap.get("quit")); // NOI18N
@@ -579,6 +597,7 @@ public class AccountsView extends FrameView {
       
         setInputLine(false);
         jtxtChgAmt.requestFocusInWindow();
+        jbtnLog.setEnabled(true);
     }//GEN-LAST:event_jbtnCreateActionPerformed
 
     private void jbtnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnCancelActionPerformed
@@ -657,6 +676,87 @@ public class AccountsView extends FrameView {
         }
         jtxtRate.requestFocusInWindow();
     }//GEN-LAST:event_jbtnIntTransActionPerformed
+
+    private void jbtnLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnLogActionPerformed
+        statusMessageLabel.setText("");
+        ArrayList<String> log = a.getLog();
+        
+        if (!a.getErrMsg().isEmpty()) {
+            statusMessageLabel.setText(a.getErrMsg());
+            return;
+        }
+        
+        statusMessageLabel.setText(a.getActionMsg());
+        JTextArea t = new JTextArea();
+        for (String s : log) {
+            t.append(s + "\n");
+        }
+        JScrollPane sp = new JScrollPane(t);
+        JDialog dg = new JDialog();
+        dg.setTitle("Log History for account: " + a.getAcctNo());
+        dg.add(sp);
+        dg.setBounds(150, 400, 800, 300);
+        dg.setVisible(true);
+    }//GEN-LAST:event_jbtnLogActionPerformed
+
+    private void jmnuOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmnuOpenActionPerformed
+        statusMessageLabel.setText("");
+        NumberFormat curr = NumberFormat.getCurrencyInstance();
+        
+        JFileChooser f = new JFileChooser(".");
+        f.setDialogTitle("Select account file to open.");
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Text Files (*.txt)", "txt");
+        f.setFileFilter(filter);
+        JDialog dg = new JDialog();
+        int rval = f.showOpenDialog(dg);
+        
+        if (rval == JFileChooser.CANCEL_OPTION) {
+            statusMessageLabel.setText("Open Canceled.");
+            return;
+        }
+        
+        String acttype = f.getSelectedFile().getName().substring(0, 2);
+        String path = f.getSelectedFile().getParent() + "\\" + f.getSelectedFile().getName().replace("L", "");
+        String actnumber = f.getSelectedFile().getName().substring(2).replace("L", "").replace(".txt", "");
+        switch(acttype) {
+            case "CK": 
+                a = new Checking(path, actnumber);
+                statusMessageLabel.setText("Checking account number - " + actnumber.toString() + " opened.");
+                break;
+            case "SV":
+                a = new Savings(path, actnumber);
+                statusMessageLabel.setText("Savings account number - " + actnumber.toString() + " opened.");
+                break;
+            default:
+                statusMessageLabel.setText("Invalid file opened.");
+                break;
+        }
+        
+        if(a.getErrMsg().isEmpty()) {
+            jtxtDisplayName.setText(a.getName());
+            jtxtAcctNo.setText(String.valueOf(a.getAcctNo()));
+            jtxtAcctTypeCd.setText(a.getTypeCd());
+            jtxtAcctTypeDesc.setText(a.getTypeDesc());
+            jtxtBalance.setText(curr.format(a.getBalance()));
+
+            setInputLine(false);
+            jtxtChgAmt.requestFocusInWindow();
+            jbtnLog.setEnabled(true);
+        } else {
+            statusMessageLabel.setText(a.getErrMsg());
+        }
+        
+        //Why isn't this working?? (Maybe im tired and just don't see it)
+//        if (actName == "CK") {
+//            statusMessageLabel.setText("CK selected!");
+//        } else if (actName == "SV") {
+//            statusMessageLabel.setText("SV selected!");
+//        } else {
+//            statusMessageLabel.setText("Invalid file opened.");
+//        }
+        
+        
+    }//GEN-LAST:event_jmnuOpenActionPerformed
     
     private void setInputLine(boolean tf){
         jlblTypeCd.setVisible(tf);
@@ -693,6 +793,7 @@ public class AccountsView extends FrameView {
     private javax.swing.JLabel jlblTypeCd;
     private javax.swing.JMenu jmnuAsset;
     private javax.swing.JMenuItem jmnuCK;
+    private javax.swing.JMenuItem jmnuOpen;
     private javax.swing.JMenuItem jmnuSV;
     private javax.swing.JTextField jtxtAcctNm;
     private javax.swing.JTextField jtxtAcctNo;

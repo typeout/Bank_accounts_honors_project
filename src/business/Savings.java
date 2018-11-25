@@ -19,6 +19,10 @@ public class Savings extends AssetAccount {
         super(nm, sbal, acttype);
     }
     
+    public Savings(String fn, String a) {
+        super(fn, a);
+    }
+    
     @Override
     public void setInterest(double ir){
        double intearn;

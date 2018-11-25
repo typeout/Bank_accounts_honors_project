@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
@@ -16,7 +17,7 @@ import java.util.Calendar;
 public abstract class AssetAccount implements Account {
     private int AcctNo;
     private double balance;
-    private String actmsg,errmsg,nm;
+    private String actmsg, errmsg, nm;
     NumberFormat c = NumberFormat.getCurrencyInstance();
     
     public AssetAccount() {
@@ -60,10 +61,40 @@ public abstract class AssetAccount implements Account {
         }//end of while
     }
     
+    public AssetAccount (String fn, String a) {
+        this.AcctNo = 0;
+        this.actmsg = "";
+        this.errmsg = "";
+        this.balance= 0;
+        
+        try {
+            this.AcctNo = Integer.parseInt(a);
+            
+            try {
+                BufferedReader in = new BufferedReader(new FileReader(fn));
+                this.nm = in.readLine();
+                this.balance = Double.parseDouble(in.readLine());
+                
+                if (this.errmsg.isEmpty()) {
+                   this.actmsg = getTypeCd() + " Account " +
+                            this.nm + " " + this.AcctNo + " re-opened.";
+                   writelog(this.actmsg);
+                }
+                
+            } catch (IOException e) {
+                this.errmsg = "File Open error: " + e.getMessage();
+            }
+            
+            
+        } catch (Exception e) {
+            this.errmsg = "Wrong account number.";
+        }
+    }
+    
     protected void writestatus() {
         try {
             PrintWriter out = new PrintWriter(
-                    new FileWriter(Savings.TYPECD + this.AcctNo + ".txt"));
+                    new FileWriter(getTypeCd() + this.AcctNo + ".txt"));
             out.println(this.nm);
             out.println(this.balance);
             out.close();
@@ -81,7 +112,7 @@ public abstract class AssetAccount implements Account {
             DateFormat df = DateFormat.getDateTimeInstance();
             String ts = df.format(cal.getTime());
             PrintWriter out = new PrintWriter(
-                              new FileWriter(Checking.TYPECD + "L" +
+                              new FileWriter(getTypeCd() + "L" +
                                       this.AcctNo + ".txt",true));
             out.println(ts + ": " + msg);
             out.close();
@@ -173,6 +204,33 @@ public abstract class AssetAccount implements Account {
                 this.balance -= amt;
             }
         }
+    }
+    
+    @Override
+    public ArrayList<String> getLog() {
+        ArrayList<String> log = new ArrayList<>();
+        this.errmsg = "";
+        this.actmsg = "";
+        
+        if (this.AcctNo <= 0) {
+            this.errmsg = "Log requested for non-active account.";
+            return null;
+        }
+        
+        try {
+            BufferedReader in = new BufferedReader(new FileReader(getTypeCd() + "L" + this.AcctNo+".txt"));
+            String s = in.readLine();
+            while (s != null) {
+                log.add(s);
+                s = in.readLine();
+            }
+            in.close();
+            this.actmsg = "Log returned for account.";
+        } catch (Exception e) {
+            this.errmsg = "Log file error: "+e.getMessage();
+            return null;
+        }
+        return log;
     }
     
     @Override

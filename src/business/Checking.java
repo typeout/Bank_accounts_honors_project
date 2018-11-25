@@ -17,6 +17,10 @@ public class Checking extends AssetAccount {
         super(nm, sbal, acttype);
     }
     
+    public Checking(String fn, String a) {
+        super(fn, a);
+    }
+    
     @Override
     public void setInterest(double ir){
      super.setActionMsg("Interest request: No action - checking accounts do not earn interest");

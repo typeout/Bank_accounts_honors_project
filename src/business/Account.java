@@ -1,5 +1,7 @@
 package business;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Domas Butrimavicius
@@ -15,4 +17,5 @@ public interface Account {
     public String getActionMsg();
     public String getTypeCd();
     public String getTypeDesc();
+    public ArrayList<String> getLog();
 }

@@ -1,4 +1,0 @@
-Nov 10, 2018 10:37:03 AM: CK Account Domo Checking 882726 opened.
-Nov 10, 2018 10:37:09 AM: Charge of $100.00 for Food posted.
-Nov 10, 2018 10:37:14 AM: Deposit of $500.00 posted.
-Nov 10, 2018 10:37:19 AM: Interest request: No action - checking accounts do not earn interest
