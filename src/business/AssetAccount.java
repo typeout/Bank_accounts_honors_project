@@ -150,37 +150,6 @@ public abstract class AssetAccount implements Account {
     }
          
     @Override
-    public void setCharge(double amt, String desc) {
-        errmsg = "";
-        actmsg = "";
-        
-        if (this.AcctNo <= 0) {
-            errmsg = "Charge attempt on non-active account.";
-            return;
-        }
-        
-        if (amt <= 0) {
-           actmsg = "Charge of " + c.format(amt) + " for " + desc +
-                    " declined - illegal amount not positive. ";
-           writelog(actmsg);
-        } else if( amt > this.balance) {
-           actmsg = "Charge of " + c.format(amt) + " for " + desc +
-                    " declined - insufficeint funds "; 
-           writelog(actmsg);
-        } else {
-           this.balance -= amt;
-           writestatus();
-           if (this.errmsg.isEmpty()) {
-               actmsg = "Charge of " + c.format(amt) + " for " + desc +
-                        " posted.";
-               writelog(actmsg);
-           }else {
-               this.balance += amt; //back out operation
-           }
-        }
-    }
-    
-    @Override
     public void setPayment(double amt) {
         errmsg = "";
         actmsg = "";

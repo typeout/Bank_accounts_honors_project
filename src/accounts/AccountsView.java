@@ -3,6 +3,7 @@ package accounts;
 
 import business.Account;
 import business.Checking;
+import business.MoneyMarket;
 import business.Savings;
 import org.jdesktop.application.Action;
 import org.jdesktop.application.ResourceMap;
@@ -145,6 +146,7 @@ public class AccountsView extends FrameView {
         jmnuAsset = new javax.swing.JMenu();
         jmnuCK = new javax.swing.JMenuItem();
         jmnuSV = new javax.swing.JMenuItem();
+        jmnuMM = new javax.swing.JMenuItem();
         jmnuOpen = new javax.swing.JMenuItem();
         javax.swing.JMenuItem exitMenuItem = new javax.swing.JMenuItem();
         javax.swing.JMenu helpMenu = new javax.swing.JMenu();
@@ -473,6 +475,15 @@ public class AccountsView extends FrameView {
         });
         jmnuAsset.add(jmnuSV);
 
+        jmnuMM.setText(resourceMap.getString("jmnuMM.text")); // NOI18N
+        jmnuMM.setName("jmnuMM"); // NOI18N
+        jmnuMM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmnuMMActionPerformed(evt);
+            }
+        });
+        jmnuAsset.add(jmnuMM);
+
         fileMenu.add(jmnuAsset);
 
         jmnuOpen.setText(resourceMap.getString("jmnuOpen.text")); // NOI18N
@@ -585,6 +596,8 @@ public class AccountsView extends FrameView {
             a = new Checking(jtxtAcctNm.getText(),sbal, a.getTypeCd());
         } else if (a instanceof Savings) {
             a = new Savings(jtxtAcctNm.getText(),sbal, a.getTypeCd());
+        } else if ( a instanceof MoneyMarket) {
+            a = new MoneyMarket(jtxtAcctNm.getText(),sbal, a.getTypeCd());
         } else {
             statusMessageLabel.setText("unknown account type");
         }
@@ -727,6 +740,10 @@ public class AccountsView extends FrameView {
                 a = new Savings(path, actnumber);
                 statusMessageLabel.setText("Savings account number - " + actnumber.toString() + " opened.");
                 break;
+            case "MM":
+                a = new MoneyMarket(path, actnumber);
+                statusMessageLabel.setText("Savings account number - " + actnumber.toString() + " opened.");
+                break;
             default:
                 statusMessageLabel.setText("Invalid file opened.");
                 break;
@@ -757,6 +774,17 @@ public class AccountsView extends FrameView {
         
         
     }//GEN-LAST:event_jmnuOpenActionPerformed
+
+    private void jmnuMMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmnuMMActionPerformed
+        a = new MoneyMarket();
+        setInputLine(true);
+        jtxtTypeCd.setText(a.getTypeCd());
+        jtxtAcctNm.setText("");
+        jlblStartVal.setText("Initial Deposit");
+        jtxtStartVal.setText("");
+        jtxtStartVal.setEnabled(true);
+        jtxtAcctNm.requestFocusInWindow();
+    }//GEN-LAST:event_jmnuMMActionPerformed
     
     private void setInputLine(boolean tf){
         jlblTypeCd.setVisible(tf);
@@ -793,6 +821,7 @@ public class AccountsView extends FrameView {
     private javax.swing.JLabel jlblTypeCd;
     private javax.swing.JMenu jmnuAsset;
     private javax.swing.JMenuItem jmnuCK;
+    private javax.swing.JMenuItem jmnuMM;
     private javax.swing.JMenuItem jmnuOpen;
     private javax.swing.JMenuItem jmnuSV;
     private javax.swing.JTextField jtxtAcctNm;

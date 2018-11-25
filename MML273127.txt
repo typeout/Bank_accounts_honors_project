@@ -1,0 +1,44 @@
+Nov 25, 2018 2:13:50 PM: MM Account Money Market Domo 273127 opened.
+Nov 25, 2018 2:14:02 PM: Charge of $1,000.00 for Vacation posted.
+Nov 25, 2018 2:14:09 PM: Deposit of $2,000.00 posted.
+Nov 25, 2018 2:14:16 PM: Interest earned = $82.50 for month at annual rate of: 9%
+Nov 25, 2018 2:14:29 PM: MM Account Money Market Domo 273127 re-opened.
+Nov 25, 2018 2:14:49 PM: Charge of $1,000.00 for Loan to a friend posted.
+Nov 25, 2018 2:15:05 PM: MM Account Money Market Domo 273127 re-opened.
+Nov 25, 2018 2:28:56 PM: MM Account Money Market Domo 273127 re-opened.
+Nov 25, 2018 2:29:06 PM: Charge of $100.00 for first posted.
+Nov 25, 2018 2:29:13 PM: Charge of $100.00 for second posted.
+Nov 25, 2018 2:29:20 PM: Charge of $100.00 for third posted.
+Nov 25, 2018 2:29:27 PM: Charge of $100.00 for fourth posted.
+Nov 25, 2018 2:29:38 PM: Charge of $100.00 for fifth posted.
+Nov 25, 2018 2:29:38 PM: Charge of $25.00 for going over 3 free charges posted.
+Nov 25, 2018 2:30:13 PM: MM Account Money Market Domo 273127 re-opened.
+Nov 25, 2018 2:30:18 PM: Charge of $100.00 for 1 posted.
+Nov 25, 2018 2:30:22 PM: Charge of $100.00 for 2 posted.
+Nov 25, 2018 2:30:25 PM: Charge of $100.00 for 3 posted.
+Nov 25, 2018 2:30:29 PM: Charge of $100.00 for 4 posted.
+Nov 25, 2018 2:30:29 PM: Charge of $25.00 for going over 3 free charges posted.
+Nov 25, 2018 2:30:36 PM: Charge of $100.00 for 5 posted.
+Nov 25, 2018 2:30:36 PM: Charge of $25.00 for going over 3 free charges posted.
+Nov 25, 2018 2:30:57 PM: Charge of $7.50 for 6 posted.
+Nov 25, 2018 2:30:57 PM: Charge of $25.00 for going over 3 free charges posted.
+Nov 25, 2018 2:31:04 PM: Deposit of $25.00 posted.
+Nov 25, 2018 2:31:07 PM: Deposit of $1,000.00 posted.
+Nov 25, 2018 2:31:16 PM: Interest earned = $50.00 for month at annual rate of: 6%
+Nov 25, 2018 2:31:23 PM: Charge of $100.00 for 1 posted.
+Nov 25, 2018 2:31:29 PM: Charge of $100.00 for 2 posted.
+Nov 25, 2018 2:31:36 PM: Charge of $100.00 for 3 posted.
+Nov 25, 2018 2:31:41 PM: Charge of $100.00 for 4 posted.
+Nov 25, 2018 2:31:41 PM: Charge of $25.00 for going over 3 free charges posted.
+Nov 25, 2018 2:32:18 PM: MM Account Money Market Domo 273127 re-opened.
+Nov 25, 2018 2:32:28 PM: Charge of $125.00 for 1 posted.
+Nov 25, 2018 2:32:34 PM: Charge of $100.00 for 2 posted.
+Nov 25, 2018 2:32:37 PM: Charge of $100.00 for 3 posted.
+Nov 25, 2018 2:32:40 PM: Charge of $100.00 for 4 posted.
+Nov 25, 2018 2:32:40 PM: Charge of $25.00 for going over 3 free charges posted.
+Nov 25, 2018 2:32:45 PM: Interest earned = $45.88 for month at annual rate of: 6%
+Nov 25, 2018 2:32:50 PM: Charge of $10.00 for 1 posted.
+Nov 25, 2018 2:32:53 PM: Charge of $10.00 for 2 posted.
+Nov 25, 2018 2:32:57 PM: Charge of $10.00 for 3 posted.
+Nov 25, 2018 2:33:02 PM: Charge of $10.00 for 4 posted.
+Nov 25, 2018 2:33:02 PM: Charge of $25.00 for going over 3 free charges posted.

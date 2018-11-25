@@ -1,0 +1,12 @@
+Nov 25, 2018 2:11:33 PM: CK Account Checking Domo 481674 opened.
+Nov 25, 2018 2:11:48 PM: Charge of $15.00 for Gas posted.
+Nov 25, 2018 2:11:57 PM: Deposit of $100.00 posted.
+Nov 25, 2018 2:12:04 PM: Interest request: No action - checking accounts do not earn interest
+Nov 25, 2018 2:12:13 PM: CK Account Checking Domo 481674 re-opened.
+Nov 25, 2018 2:31:50 PM: CK Account Checking Domo 481674 re-opened.
+Nov 25, 2018 2:31:55 PM: Charge of $100.00 for 1 posted.
+Nov 25, 2018 2:31:58 PM: Charge of $100.00 for 2 posted.
+Nov 25, 2018 2:32:01 PM: Charge of $100.00 for 3 posted.
+Nov 25, 2018 2:32:04 PM: Charge of $100.00 for 4 posted.
+Nov 25, 2018 2:32:07 PM: Charge of $100.00 for 5 posted.
+Nov 25, 2018 2:32:10 PM: Deposit of $1,000.00 posted.

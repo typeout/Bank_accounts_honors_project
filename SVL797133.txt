@@ -1,0 +1,7 @@
+Nov 25, 2018 2:12:29 PM: SV Account Savings Domo 797133 opened.
+Nov 25, 2018 2:12:45 PM: Charge of $100.00 for Car Loan posted.
+Nov 25, 2018 2:12:55 PM: Deposit of $400.00 posted.
+Nov 25, 2018 2:13:02 PM: Interest earned = $6.50 for month at annual rate of: 6%
+Nov 25, 2018 2:13:12 PM: SV Account Savings Domo 797133 re-opened.
+Nov 25, 2018 2:13:22 PM: Charge of $300.00 for other posted.
+Nov 25, 2018 2:13:31 PM: Interest earned = $5.03 for month at annual rate of: 6%

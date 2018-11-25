@@ -1,4 +1,3 @@
-
 package business;
 
 import java.text.NumberFormat;
@@ -7,19 +6,20 @@ import java.text.NumberFormat;
  *
  * @author Domas Butrimavicius
  */
-public class Savings extends AssetAccount {
-    public static final String TYPECD = "SV";
-    public static final String TYPEDESC = "Passbook Savings";
+public class MoneyMarket extends AssetAccount {
+    public static final String TYPECD = "MM";
+    public static final String TYPEDESC = "Money Market";
+    private int chargeCount = 0;
     
-    public Savings(){
+    public MoneyMarket(){
         super();
     }
     
-    public Savings(String nm, double sbal, String acttype){
+    public MoneyMarket(String nm, double sbal, String acttype){
         super(nm, sbal, acttype);
     }
     
-    public Savings(String fn, String a) {
+    public MoneyMarket(String fn, String a) {
         super(fn, a);
     }
     
@@ -50,6 +50,7 @@ public class Savings extends AssetAccount {
            }else {
                super.setBalance(balance); //back out operation
            }
+           this.chargeCount = 0;
        } //end of interest charge method
     }
     
@@ -58,6 +59,7 @@ public class Savings extends AssetAccount {
         super.setErrMsg("");
         super.setActionMsg("");
         double balance = super.getBalance();
+        int freeCharges = 3, charge = 25;
 
         if (super.getAcctNo() <= 0) {
             super.setErrMsg("Charge attempt on non-active account.");
@@ -79,17 +81,29 @@ public class Savings extends AssetAccount {
            }else {
                super.setBalance(balance); //back out operation
            }
+           this.chargeCount += 1;
+           if (this.chargeCount > freeCharges) {
+                balance = super.getBalance();
+                super.setBalance(balance - charge);
+                writestatus();
+                if (super.getErrMsg().isEmpty()) {
+                    super.setActionMsg("Charge of " + c.format(charge) + " for going over " + freeCharges + " free charges posted.");
+                    super.writelog(super.getActionMsg());
+                }else {
+                    super.setBalance(balance); //back out operation
+                }
+           }
         }
     }
     
     @Override
     public String getTypeCd() {
-        return Savings.TYPECD;
+        return MoneyMarket.TYPECD;
     }
     
     @Override
     public String getTypeDesc() {
-        return Savings.TYPEDESC;
+        return MoneyMarket.TYPEDESC;
     }
-
-}//end of savings
+    
+}
